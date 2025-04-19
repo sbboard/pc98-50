@@ -20,6 +20,15 @@ onMounted(() => {
             changeScale();
         }
     });
+
+    const pathname = window.location.pathname.replace('/', '');
+    if (pathname === '0'.repeat(50)) return;
+    pathname.split('').forEach((num, idx) => {
+        let status: 'progress' | 'inactive' | 'complete' = 'inactive';
+        if (num === '1') status = 'progress';
+        if (num === '2') status = 'complete';
+        gameStore.gamesRef[idx].status = status;
+    });
 });
 </script>
 
