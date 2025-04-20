@@ -5,11 +5,12 @@ import InfoBar from './components/infoBar.vue';
 import { useGameStore } from './stores/gameStore.ts';
 
 const gameStore = useGameStore();
+const { setCurrentGame } = gameStore;
 const currentScale = ref(1);
 const scaleValue = computed(() => `scale(${currentScale.value})`);
 
 function changeScale() {
-    if (currentScale.value === 4) {
+    if (currentScale.value === 3) {
         currentScale.value = 1;
     } else currentScale.value += 1;
 }
@@ -35,7 +36,13 @@ onMounted(() => {
 <template>
     <div id="main">
         <div class="games">
-            <GameDiscs v-for="(game, idx) in gameStore.gamesRef" :game :idx :key="game.name" />
+            <GameDiscs
+                v-for="(game, idx) in gameStore.gamesRef"
+                :game
+                :idx
+                :key="game.name"
+                @mouseover="setCurrentGame(game)"
+            />
         </div>
         <InfoBar />
     </div>
@@ -51,8 +58,7 @@ onMounted(() => {
     image-rendering: pixelated;
     transition: transform 0.25s;
     .games {
-        padding: 30px;
-        padding-top: 16px;
+        padding: 16px 8px 16px 16px;
         line-height: 0;
         display: flex;
         justify-content: center;

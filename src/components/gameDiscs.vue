@@ -26,9 +26,15 @@ const disc = computed(() => {
         :class="game.status"
         @click="gameStore.updateGameStatus(game.name)"
     >
-        <img v-if="game.status === 'inactive'" class="web" :src="`/sIconCobwebFull_${webNo}.png`" />
-        <img class="label" :src="`/pc98/${game.img}`" />
-        <img :src="disc" />
+        <div class="cart">
+            <img
+                v-if="game.status === 'inactive'"
+                class="web"
+                :src="`/sIconCobwebFull_${webNo}.png`"
+            />
+            <img class="label" :src="`/pc98/${game.img}`" />
+            <img :src="disc" />
+        </div>
     </div>
 </template>
 
@@ -37,20 +43,26 @@ const disc = computed(() => {
     position: relative;
     display: inline-block;
     width: 32px;
-    height: 36px;
+    height: 40px;
     cursor: pointer;
-    & > * {
-        pointer-events: none;
-    }
-    .label {
-        width: 22px;
-        height: 22px;
-        position: absolute;
-        left: 4px;
-        top: 2px;
-        image-rendering: -webkit-optimize-contrast;
-        filter: sepia(0) hue-rotate(0deg) brightness(1) contrast(1) saturate(1);
-        transition: filter 0.25s;
+    background: url('/sIconShadow_0.png');
+    margin-right: 4px;
+    .cart {
+        transform: translate(-2px, -2px);
+        transition: transform 0.25s;
+        &:hover {
+            transform: translate(-2px, -4px);
+        }
+        .label {
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            left: 3px;
+            top: 1px;
+            image-rendering: -webkit-optimize-contrast;
+            filter: sepia(0) hue-rotate(0deg) brightness(1) contrast(1) saturate(1);
+            transition: filter 0.25s;
+        }
     }
     &.inactive {
         .label {

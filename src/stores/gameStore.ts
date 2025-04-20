@@ -1,9 +1,10 @@
-import { ref } from 'vue';
+import { ref, type Ref } from 'vue';
 import { defineStore } from 'pinia';
-import { games } from '../composables/games.ts';
+import { games, type Game } from '../composables/games.ts';
 
 export const useGameStore = defineStore('game', () => {
     const gamesRef = ref(games);
+    const currentGame: Ref<Game | null> = ref(null);
 
     function updateGameStatus(gameName: string) {
         const game = gamesRef.value.find(game => game.name === gameName);
@@ -23,5 +24,10 @@ export const useGameStore = defineStore('game', () => {
 
         window.history.replaceState(null, '', path.join(''));
     }
-    return { gamesRef, updateGameStatus };
+
+    function setCurrentGame(game: Game | null) {
+        currentGame.value = game;
+    }
+
+    return { gamesRef, currentGame, updateGameStatus, setCurrentGame };
 });
