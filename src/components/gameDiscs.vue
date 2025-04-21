@@ -13,9 +13,9 @@ const { game, idx } = defineProps<{
 const webNo = idx % 6;
 
 const disc = computed(() => {
-    if (game.status === 'inactive') return '/sIconEmpty_3.png';
-    if (game.status === 'complete') return '/sIconEmpty_5.png';
-    return '/sIconEmpty_1.png';
+    if (game.status === 'inactive') return './sIconEmpty_3.png';
+    if (game.status === 'complete') return './sIconEmpty_5.png';
+    return './sIconEmpty_1.png';
 });
 </script>
 
