@@ -15,20 +15,25 @@ function changeScale() {
     } else currentScale.value += 1;
 }
 
+const params = new URLSearchParams(window.location.search);
+const progressParam = params.get('progress');
+if (!progressParam) {
+    const zeros = '0'.repeat(50);
+    window.history.replaceState(null, '', `${window.location.pathname}?progress=${zeros}`);
+} else {
+    progressParam.split('').forEach((num, idx) => {
+        let status: 'progress' | 'inactive' | 'complete' = 'inactive';
+        if (num === '1') status = 'progress';
+        if (num === '2') status = 'complete';
+        gameStore.gamesRef[idx].status = status;
+    });
+}
+
 onMounted(() => {
     addEventListener('keydown', e => {
         if (e.key === 's') {
             changeScale();
         }
-    });
-
-    const pathname = window.location.pathname.replace('/', '');
-    if (pathname === '0'.repeat(50)) return;
-    pathname.split('').forEach((num, idx) => {
-        let status: 'progress' | 'inactive' | 'complete' = 'inactive';
-        if (num === '1') status = 'progress';
-        if (num === '2') status = 'complete';
-        gameStore.gamesRef[idx].status = status;
     });
 });
 </script>

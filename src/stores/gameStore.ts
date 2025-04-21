@@ -18,11 +18,13 @@ export const useGameStore = defineStore('game', () => {
             game.status = 'inactive';
         }
 
-        const path = window.location.pathname.split('');
-        path[gameIdx + 1] =
+        const params = new URLSearchParams(window.location.search);
+        const progress = params.get('progress')?.split('') || [];
+        progress[gameIdx] =
             game.status === 'inactive' ? '0' : game.status === 'progress' ? '1' : '2';
 
-        window.history.replaceState(null, '', path.join(''));
+        params.set('progress', progress.join(''));
+        window.history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
     }
 
     function setCurrentGame(game: Game | null) {

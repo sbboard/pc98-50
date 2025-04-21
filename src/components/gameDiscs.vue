@@ -30,9 +30,9 @@ const disc = computed(() => {
             <img
                 v-if="game.status === 'inactive'"
                 class="web"
-                :src="`/sIconCobwebFull_${webNo}.png`"
+                :src="`./sIconCobwebFull_${webNo}.png`"
             />
-            <img class="label" :src="`/pc98/${game.img}`" />
+            <img class="label" :src="`./pc98/${game.img}`" />
             <img :src="disc" />
         </div>
     </div>
