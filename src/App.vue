@@ -10,7 +10,7 @@ const currentScale = ref(1);
 const scaleValue = computed(() => `scale(${currentScale.value})`);
 
 function changeScale() {
-    if (currentScale.value === 3) {
+    if (currentScale.value === 4) {
         currentScale.value = 1;
     } else currentScale.value += 1;
 }

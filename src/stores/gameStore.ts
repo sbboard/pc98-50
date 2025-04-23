@@ -3,7 +3,13 @@ import { defineStore } from 'pinia';
 import { games, type Game } from '../composables/games.ts';
 
 export const useGameStore = defineStore('game', () => {
-    const gamesRef = ref(games);
+    const gamesRef = ref(
+        games.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateA.getTime() - dateB.getTime();
+        })
+    );
     const currentGame: Ref<Game | null> = ref(null);
 
     function updateGameStatus(gameName: string) {
