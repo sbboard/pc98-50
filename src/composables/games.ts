@@ -9,22 +9,6 @@ export interface Game {
 
 export const games = [
     {
-        company: 'SystemSoft',
-        date: '10/30/1983',
-        name: 'Lode Runner',
-        genre: 'Puzzle Platform',
-        img: 'loderunner.png',
-        status: 'inactive',
-    },
-    {
-        company: 'Enix / Chunsoft',
-        date: '1/1/1984',
-        name: 'Door Door',
-        genre: 'Puzzle Platform',
-        img: 'door.png',
-        status: 'inactive',
-    },
-    {
         company: 'System Sacom',
         date: '8/1/1985',
         name: 'Marchen Veil',
@@ -102,14 +86,6 @@ export const games = [
         name: 'Fray in Magical Adventure',
         genre: 'Shoot Em Up',
         img: 'fray.png',
-        status: 'inactive',
-    },
-    {
-        company: 'Studio Brown Rice',
-        date: '1/1/1992',
-        name: 'Steel Gun Nyan',
-        genre: 'Lightgun Shooter',
-        img: 'steelgun.png',
         status: 'inactive',
     },
     {
@@ -406,6 +382,30 @@ export const games = [
         name: 'Curse of Castle',
         genre: 'Maze Adventure',
         img: 'curse.png',
+        status: 'inactive',
+    },
+    {
+        company: 'dB-SOFT',
+        date: '6/28/1990',
+        name: 'Flappy Plus',
+        genre: 'Puzzle Action',
+        img: 'flap.png',
+        status: 'inactive',
+    },
+    {
+        company: 'Family Soft',
+        date: '2/15/1996',
+        name: 'DIES IRAE',
+        genre: 'Detective Adventure',
+        img: 'dies.png',
+        status: 'inactive',
+    },
+    {
+        company: 'Nihon Create',
+        date: '2/05/1993',
+        name: '3x3 EYES',
+        genre: 'Manga Tie-In Adventure',
+        img: '3x3.png',
         status: 'inactive',
     },
 ] as Game[];
